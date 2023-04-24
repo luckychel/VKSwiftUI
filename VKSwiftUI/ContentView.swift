@@ -56,7 +56,7 @@ struct ContentView: View {
                                 .font(.system(size: 20))
                             Spacer()
                             TextField("", text: $login)
-                                .frame(maxWidth: 190)
+                                .frame(maxWidth: 180)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                         }
                         HStack {
@@ -64,7 +64,7 @@ struct ContentView: View {
                                 .font(.system(size: 20))
                             Spacer()
                             SecureField("", text: $password)
-                                .frame(maxWidth: 190)
+                                .frame(maxWidth: 180)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                         }
                     }.frame(maxWidth: 280)
