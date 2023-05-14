@@ -41,7 +41,7 @@ struct ContentView: View {
                             .frame(width: 180, height: 180)
                             .clipShape(Circle())
                             .overlay {
-                                Circle().stroke(.white, lineWidth: 4)
+                                Circle().stroke(.white, lineWidth: 2)
                             }
                             .shadow(radius: 7)
                     }
@@ -91,14 +91,55 @@ struct ContentView: View {
     }
 }
 
+struct Friends: View {
+    
+    @State private var searchField = ""
+    
+    var body: some View {
+        ZStack
+        {
+            ScrollView() {
+                VStack(alignment: .center, spacing: 0) {
+                    HStack {
+                        Button(action: {
+                              print("button back pressed")
+                            }) {
+                                Image(systemName: "chevron.backward")
+                            }
+                        Spacer()
+                        Text("Друзья")
+                        Spacer()
+                        Text("")
+                    }
+                    .padding(8)
+                    .background(.orange)
+                    HStack {
+                        TextField("", text: $searchField)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
+                    .padding(8)
+                    .background(.green)
+                }
+                
+            }
+        }
+    }
+}
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+                .previewDevice("Iphone 14 Pro")
+            Friends()
+                .previewDevice("Iphone 14")
+        }
     }
 }
 
 extension UIApplication {
-func endEditing() {
-    sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
 }
