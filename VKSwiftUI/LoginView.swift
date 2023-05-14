@@ -43,9 +43,9 @@ struct LoginView: View {
                             .resizable()
                             .frame(width: 180, height: 180)
                             .clipShape(Circle())
-                            .overlay {
-                                Circle().stroke(.white, lineWidth: 2)
-                            }
+//                            .overlay {
+//                                Circle().stroke(.white, lineWidth: 2)
+//                            }
                             .shadow(radius: 7)
                     }
                     Text("Vkontakte")
