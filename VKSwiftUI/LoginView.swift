@@ -14,6 +14,7 @@ struct LoginView: View {
     @State private var password = ""
     @State private var showPassword: Bool = false
     @State private var shouldShowLogo: Bool = true
+    @State private var showIncorrentCredentialsWarning = false
     
     private let keyboardIsOnPublisher = Publishers.Merge(
         NotificationCenter.default.publisher(for:
@@ -24,6 +25,17 @@ struct LoginView: View {
         .map { _ in false }
     )
     .removeDuplicates()
+    
+    private func verifyLoginData() {
+        
+        if login == "Bar" && password == "Foo" {
+            // authorizing user
+        } else {
+            showIncorrentCredentialsWarning = true
+        }
+        // сбрасываем пароль, после проверки для лучшего UX
+        password = ""
+    }
     
     var body: some View {
         
@@ -77,7 +89,7 @@ struct LoginView: View {
                         
                     }.frame(maxWidth: 280)
                     
-                    Button(action: { print("Hello") },
+                    Button(action: verifyLoginData,
                            label: {
                         Text("Sign in")
                             .frame(minWidth: 0, maxWidth: 150)
@@ -95,7 +107,9 @@ struct LoginView: View {
             }.padding()
         }.onTapGesture {
             UIApplication.shared.endEditing()
-        }
+        }.alert(isPresented: $showIncorrentCredentialsWarning, content: {
+            Alert(title: Text("Error"), message: Text("Incorrent Login/Password was entered"))
+        })
     }
 }
 

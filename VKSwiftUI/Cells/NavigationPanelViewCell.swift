@@ -29,9 +29,25 @@ struct NavigationPanelViewCell: View {
             Text(self.title)
                 .bold()
                 .font(.system(size: 26))
+                .padding(0)
             Spacer()
             Text("")
+                .padding([.trailing], 8)
         }
         .padding(8)
+//        .frame(
+//              minWidth: 0,
+//              maxWidth: .infinity,
+//              minHeight: 0,
+//              maxHeight: .infinity,
+//              alignment: .topLeading
+//            )
+        .lineLimit(1)
+    }
+}
+
+struct NavigationPanelViewCell_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationPanelViewCell(title: "Тестовая группа")
     }
 }
