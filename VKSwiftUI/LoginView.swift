@@ -15,6 +15,7 @@ struct LoginView: View {
     @State private var showPassword: Bool = false
     @State private var shouldShowLogo: Bool = true
     @State private var showIncorrentCredentialsWarning = false
+    @Binding var isUserLoggedIn: Bool
     
     private let keyboardIsOnPublisher = Publishers.Merge(
         NotificationCenter.default.publisher(for:
@@ -29,7 +30,7 @@ struct LoginView: View {
     private func verifyLoginData() {
         
         if login == "Bar" && password == "Foo" {
-            // authorizing user
+            isUserLoggedIn = true
         } else {
             showIncorrentCredentialsWarning = true
         }
@@ -107,9 +108,10 @@ struct LoginView: View {
             }.padding()
         }.onTapGesture {
             UIApplication.shared.endEditing()
-        }.alert(isPresented: $showIncorrentCredentialsWarning, content: {
-            Alert(title: Text("Error"), message: Text("Incorrent Login/Password was entered"))
-        })
+        }.alert(isPresented: $showIncorrentCredentialsWarning,
+                content: {
+                    Alert(title: Text("Error"), message: Text("Incorrent Login/Password was entered"))
+                })
     }
 }
 
@@ -122,7 +124,7 @@ extension UIApplication {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LoginView()
+            LoginView(isUserLoggedIn: Binding<Bool>(get: { false }, set: { _ in }))
         }
     }
 }

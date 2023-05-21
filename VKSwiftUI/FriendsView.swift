@@ -14,9 +14,9 @@ struct FriendsView: View {
         {
             //ScrollView() {
                 VStack(alignment: .center, spacing: 0) {
-                    //MARK: Panel header
-                    NavigationPanelViewCell(title: "Друзья")
-                        //.background(.orange)
+//                    //MARK: Panel header
+//                    NavigationPanelViewCell(title: "Друзья")
+//                        //.background(.orange)
                     
                     //MARK: Panel searching
                     SearchViewCell()
@@ -29,6 +29,8 @@ struct FriendsView: View {
                 }
             //}
         }
+        //.navigationBarItems(leading: NavigationPanelViewCell(title: "Друзья"))
+        .navigationTitle("Друзья")
     }
 }
 
