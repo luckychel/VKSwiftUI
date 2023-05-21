@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NavigationPanelViewCell: View {
     
+    @Environment(\.presentationMode) var presentationMode
+    
     private var title = ""
     
     init(title: String) {
@@ -16,33 +18,49 @@ struct NavigationPanelViewCell: View {
     }
     
     var body: some View {
-        HStack {
-            Button(action: {
-                  print("button back pressed")
-                }) {
-                    Image(systemName: "chevron.backward")
-                        .foregroundColor(Color(UIColor.init(rgb: 0x2688EB)))
-                        .font(.system(size: 28))
-                }
-                .padding([.leading], 8)
-            Spacer()
-            Text(self.title)
-                .bold()
-                .font(.system(size: 26))
-                .padding(0)
-            Spacer()
-            Text("")
-                .padding([.trailing], 8)
+        Group {
+            
         }
-        .padding(8)
-//        .frame(
-//              minWidth: 0,
-//              maxWidth: .infinity,
-//              minHeight: 0,
-//              maxHeight: .infinity,
-//              alignment: .topLeading
-//            )
-        .lineLimit(1)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(title)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button {
+            presentationMode.wrappedValue.dismiss()
+        } label: {
+            Image(systemName: "chevron.backward")
+                .foregroundColor(Color(UIColor.init(rgb: 0x2688EB)))
+                .font(.system(size: 20))
+        })
+
+        
+        
+//        HStack {
+//            Button(action: {
+//                  print("button back pressed")
+//                }) {
+//                    Image(systemName: "chevron.backward")
+//                        .foregroundColor(Color(UIColor.init(rgb: 0x2688EB)))
+//                        .font(.system(size: 28))
+//                }
+//                .padding([.leading], 8)
+//            Spacer()
+//            Text(self.title)
+//                .bold()
+//                .font(.system(size: 26))
+//                .padding(0)
+//            Spacer()
+//            Text("")
+//                .padding([.trailing], 8)
+//        }
+//        .padding(8)
+////        .frame(
+////              minWidth: 0,
+////              maxWidth: .infinity,
+////              minHeight: 0,
+////              maxHeight: .infinity,
+////              alignment: .topLeading
+////            )
+//        .lineLimit(1)
     }
 }
 

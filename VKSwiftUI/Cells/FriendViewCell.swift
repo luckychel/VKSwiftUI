@@ -8,10 +8,28 @@
 import SwiftUI
 
 struct FriendViewCell: View {
+    
+    var logo: String = ""
+    var firstName: String = ""
+    var lastName: String = ""
+    var groupName: String = ""
+    
+    init(logo: String, firstName: String, lastName: String, groupName: String) {
+        self.logo = logo
+        self.firstName = firstName
+        self.lastName = lastName
+        self.groupName = groupName
+    }
+    
+    init(friend: Friend) {
+        self.logo = friend.logo
+        self.firstName = friend.firstName
+        self.lastName = friend.lastName
+        self.groupName = friend.groupName
+    }
+    
     var body: some View {
         VStack (spacing: 0) {
-            FriendCell
-            FriendCell
             FriendCell
         }
 //        .frame(
@@ -25,22 +43,23 @@ struct FriendViewCell: View {
 }
 
 private extension FriendViewCell {
+   
     var FriendCell: some View {
         HStack {
             Avatar {
-                Image("marina")
+                Image(logo)
             }
             .padding([.trailing], 5)
             
             VStack(alignment: .leading, spacing: 5) {
 
                 HStack(alignment: .top, spacing: 5) {
-                    Text("Марина")
+                    Text(firstName)
                         .font(.system(size: 16))
-                    Text("Антоненко")
+                    Text(lastName)
                         .font(.system(size: 16))
                 }
-                Text("Команда ВКонтакте")
+                Text(groupName)
                     .foregroundColor(Color(UIColor(rgb: 0x818A99)))
                     .font(.system(size: 13))
             }
@@ -59,7 +78,8 @@ private extension FriendViewCell {
 
         }
         
-        .padding([.top, .bottom], 8)
+        .padding([.top], 6)
+        .padding([.bottom], 0)
         .padding([.leading, .trailing], 12)
         
 //        .overlay(
@@ -73,7 +93,7 @@ private extension FriendViewCell {
 struct FriendViewCell_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            FriendViewCell()
+            FriendViewCell(logo: "marina", firstName: "Марина", lastName: "Антоненко", groupName: "Команда Вконтакте")
         }
     }
 }

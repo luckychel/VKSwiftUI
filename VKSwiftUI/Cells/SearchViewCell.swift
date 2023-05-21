@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SearchViewCell: View {
     
-    @State private var searchField = ""
+    @Binding var searchField: String
     
     var body: some View {
         Group {
@@ -17,7 +17,7 @@ struct SearchViewCell: View {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(Color(UIColor(rgb: 0x818C99)))
                     .font(.system(size: 17))
-                TextField("Поиск", text: $searchField)
+                TextField("Поиск", text: .constant(searchField))
                     .foregroundColor(Color(UIColor(rgb: 0x818C99)))
                     .font(.system(size: 17))
             }
@@ -32,6 +32,6 @@ struct SearchViewCell: View {
 
 struct SearchViewCell_Previews: PreviewProvider {
     static var previews: some View {
-        SearchViewCell()
+        SearchViewCell(searchField: .constant(""))
     }
 }

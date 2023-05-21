@@ -14,11 +14,11 @@ struct GroupsView: View {
             //ScrollView() {
                 VStack(alignment: .center, spacing: 0) {
                     //MARK: Panel header
-                    NavigationPanelViewCell(title: "Сообщества")
+                    //NavigationPanelViewCell(title: "Сообщества")
                         //.background(.orange)
                     
                     //MARK: Panel searching
-                    SearchViewCell()
+                    SearchViewCell(searchField: .constant(""))
                         //.background(.green)
                     
                     ScrollView() {

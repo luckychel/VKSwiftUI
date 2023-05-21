@@ -124,7 +124,7 @@ extension UIApplication {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            LoginView(isUserLoggedIn: Binding<Bool>(get: { false }, set: { _ in }))
+            LoginView(isUserLoggedIn: .constant(false))
         }
     }
 }
