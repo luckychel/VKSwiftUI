@@ -50,9 +50,9 @@ struct MainView: View {
             case .friends :
                 result = "Друзья"
             case .groups:
-                result =  "Сообщества"
+                result = "Сообщества"
             case .news:
-                result =  "Новости"
+                result = "Новости"
         }
         return result
     }

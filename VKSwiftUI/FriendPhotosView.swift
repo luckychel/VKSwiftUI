@@ -23,6 +23,7 @@ struct FriendPhotosView: View {
                     ForEach(photos, id: \.self) { index in
                         VStack {
                             Image(String(index))
+                                .resizable()
                         }
                     }
                     .frame(height: geometry.size.width/2)
