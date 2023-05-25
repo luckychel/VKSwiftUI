@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "ascollectionview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apptekstudios/ASCollectionView",
+      "state" : {
+        "revision" : "4288744ba484c1062c109c0f28d72b629d321d55",
+        "version" : "2.1.1"
+      }
+    },
+    {
+      "identity" : "differencekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ra1028/DifferenceKit",
+      "state" : {
+        "revision" : "073b9671ce2b9b5b96398611427a1f929927e428",
+        "version" : "1.3.0"
+      }
+    }
+  ],
+  "version" : 2
+}
